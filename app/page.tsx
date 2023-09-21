@@ -26,7 +26,7 @@ export default async function Home() {
     return (
       <>
         <h1>You are no logged in!</h1>
-        <button onClick={() => signIn('spotify')}>Login</button>
+        {/*<button onClick={() => signIn('spotify')}>Login</button>*/}
       </>
     );
   }
