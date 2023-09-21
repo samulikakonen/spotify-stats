@@ -35,7 +35,7 @@ export default async function Home() {
       <h1>Top tracks</h1>
       <ul>
         {trackData.items.map((track) => (
-          <li>
+          <li key={track.id}>
             {track.artists.map((artist) => artist.name + ', ')} - {track.name}
           </li>
         ))}
