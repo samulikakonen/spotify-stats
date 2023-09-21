@@ -19,7 +19,8 @@ async function getData(token: string) {
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  const trackData = await getData(session.accessToken);
+  const sessionCopy: any = session;
+  const trackData = await getData(sessionCopy.accessToken);
 
   if (!session) {
     return (
@@ -34,9 +35,9 @@ export default async function Home() {
     <>
       <h1>Top tracks</h1>
       <ul>
-        {trackData.items.map((track) => (
+        {trackData.items.map((track: any) => (
           <li key={track.id}>
-            {track.artists.map((artist) => artist.name + ', ')} - {track.name}
+            {track.artists.map((artist: any) => artist.name + ', ')} - {track.name}
           </li>
         ))}
       </ul>
