@@ -40,30 +40,30 @@ export default async function Home() {
 
   return (
     <>
-      <header className='my-8'>
+      <header className='my-4 border-b border-neutral-400 px-4 lg:mx-[10vw] lg:border-none lg:mt-8'>
         <div className='flex justify-between mb-8'>
           <h1 className='text-4xl'>Audiolytix</h1>
           <a href='/api/auth/signout'>Sign out</a>
         </div>
-        <div className='flex gap-8 items-center'>
+        <div className='flex flex-col gap-8 items-center lg:flex-row'>
           {user.images.length > 0 && (
             <Image className='rounded-full' src={user.images[1].url} width={150} height={150} alt='Profile picture' />
           )}
-          <h1 className='text-3xl'>{user.display_name}</h1>
+          <h1 className='text-3xl pb-8 lg:pb-0'>{user.display_name}</h1>
         </div>
       </header>
-      <main>
-        <h2 className='text-2xl mb-8'>You top songs</h2>
-        <div className='flex gap-2 mb-8'>
+      <main className='pt-4 lg:mx-[10vw]'>
+        <h2 className='text-2xl mb-8 text-center lg:text-left'>You top songs</h2>
+        <div className='flex justify-center gap-2 mb-8 lg:items-start lg:justify-start'>
           <button className='px-4 py-1 rounded-full text-white bg-cyan-500'>Last month</button>
           <button className='px-4 py-1 rounded-full text-white bg-cyan-500'>Last 6 months</button>
           <button className='px-4 py-1 rounded-full text-white bg-cyan-500'>All time</button>
         </div>
-        <div className='flex justify-between align-start'>
-          <table className='border-separate border-spacing-y-px bg-gradient-to-l from-transparent to-gray-500'>
+        <div className='flex flex-col-reverse justify-between align-start lg:flex-row'>
+          <table className='border-separate border-spacing-y-px bg-gradient-to-l from-transparent to-gray-500 mx-4 lg:mx-0'>
             <thead>
               <tr className='bg-gradient-to-l from-zinc-900 to-neutral-800'>
-                <th className='px-6 py-2'>Pos.</th>
+                <th className='px-6 py-2 text-left'>Pos.</th>
                 <th className='text-left'>Song</th>
               </tr>
             </thead>
@@ -84,28 +84,31 @@ export default async function Home() {
               ))}
             </tbody>
           </table>
-          <div className='flex items-start pt-24 -ml-16'>
-            <Image
-              className='-mr-16 rounded-full mt-16'
-              src={trackData.items[1].album.images[0].url}
-              width={250}
-              height={250}
-              alt={trackData.items[1].album.name + ' cover image'}
-            />
-            <Image
-              className='z-10 rounded-full'
-              src={trackData.items[0].album.images[0].url}
-              width={350}
-              height={350}
-              alt={trackData.items[0].album.name + ' cover image'}
-            />
-            <Image
-              className='rounded-full -ml-16 mt-16'
-              src={trackData.items[2].album.images[0].url}
-              width={250}
-              height={250}
-              alt={trackData.items[2].album.name + ' cover image'}
-            />
+          <div className='flex justify-center mb-8 lg:mt-32'>
+            <div className='relative h-40 w-40 -mr-8 lg:h-[15vw] lg:w-[15vw] lg:mt-8'>
+              <Image
+                className='rounded-full'
+                src={trackData.items[1].album.images[0].url}
+                fill
+                alt={trackData.items[1].album.name + ' cover image'}
+              />
+            </div>
+            <div className='relative h-40 w-40 z-10 lg:h-[20vw] lg:w-[20vw]'>
+              <Image
+                className='rounded-full'
+                src={trackData.items[0].album.images[0].url}
+                fill
+                alt={trackData.items[0].album.name + ' cover image'}
+              />
+            </div>
+            <div className='relative h-40 w-40 -ml-8 lg:h-[15vw] lg:w-[15vw] lg:mt-8'>
+              <Image
+                className='rounded-full'
+                src={trackData.items[2].album.images[0].url}
+                fill
+                alt={trackData.items[2].album.name + ' cover image'}
+              />
+            </div>
           </div>
         </div>
       </main>
