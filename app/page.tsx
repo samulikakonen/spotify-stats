@@ -61,7 +61,13 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
         </div>
         <div className='flex flex-col gap-8 items-center lg:flex-row'>
           {user.images.length > 0 && (
-            <Image className='rounded-full' src={user.images[1].url} width={150} height={150} alt='Profile picture' />
+            <Image
+              className='rounded-full'
+              src={user.images[user.images.length - 1].url}
+              width={150}
+              height={150}
+              alt='Profile picture'
+            />
           )}
           <h1 className='text-3xl pb-8 lg:pb-0'>{user.display_name}</h1>
         </div>
