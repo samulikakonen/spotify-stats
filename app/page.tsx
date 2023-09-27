@@ -72,7 +72,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
           <h1 className='text-3xl pb-8 lg:pb-0'>{user.display_name}</h1>
         </div>
       </header>
-      <main className='pt-4 lg:mx-[8vw] 2xl:mx-[14vw]'>
+      <main className='pt-4 pb-8 lg:mx-[8vw] 2xl:mx-[14vw]'>
         <h2 className='text-2xl mb-8 text-center lg:text-left'>Your top songs</h2>
         <div className='flex justify-center gap-2 mb-8 lg:items-start lg:justify-start'>
           <a
@@ -95,18 +95,17 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
           </a>
         </div>
         <div className='flex flex-col-reverse justify-between align-start lg:flex-row'>
-          <table className='border-separate border-spacing-y-px bg-gradient-to-l from-transparent to-gray-500 mx-4 lg:mx-0'>
-            <thead>
-              <tr className='bg-gradient-to-l from-zinc-900 to-neutral-800'>
-                <th className='px-6 py-2 text-left'>Pos.</th>
-                <th className='text-left'>Song</th>
-              </tr>
-            </thead>
-            <tbody>
-              {trackData.items.map((track: any, index: number) => (
-                <tr key={track.id} className='bg-zinc-900'>
-                  <td className='px-6 py-2'>{index + 1}</td>
-                  <td className='flex items-center gap-4 py-2 pr-16'>
+          <div className='mx-4 lg:mx-0'>
+            <div className='bg-gradient-to-r from-zinc-900 to-transparent flex gap-4 px-4 py-2'>
+              <span>Pos.</span>
+              <span>Song</span>
+            </div>
+            <div className='h-px bg-gradient-to-l from-transparent to-gray-500' />
+            {trackData.items.map((track: any, index: number) => (
+              <>
+                <div key={track.id} className='flex gap-4 items-center py-2 pl-6'>
+                  <span>{index + 1}</span>
+                  <span className='flex items-center gap-4 pl-4'>
                     <Image
                       src={track.album.images[2].url}
                       width={25}
@@ -114,13 +113,14 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
                       alt={track.album.name + ' cover image'}
                     />
                     {track.artists.map((artist: any) => artist.name).join(', ')} - {track.name}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className='flex justify-center mb-8 lg:mt-32'>
-            <div className='relative h-40 w-40 -mr-8 lg:h-[14vw] lg:w-[14vw] lg:mt-8'>
+                  </span>
+                </div>
+                <div className='h-px bg-gradient-to-l from-transparent to-gray-500' />
+              </>
+            ))}
+          </div>
+          <div className='flex justify-center mb-8 lg:mt-32 lg:-ml-10'>
+            <div className='relative h-36 w-36 mt-2 -mr-12 sm:h-40 sm:w-40 sm:mt-6 lg:h-[14vw] lg:w-[14vw] lg:mt-8'>
               <Image
                 className='rounded-full'
                 src={trackData.items[1].album.images[0].url}
@@ -128,7 +128,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
                 alt={trackData.items[1].album.name + ' cover image'}
               />
             </div>
-            <div className='relative h-40 w-40 z-10 lg:h-[18vw] lg:w-[18vw]'>
+            <div className='relative h-40 w-40 z-10 sm:h-48 sm:w-48 lg:h-[18vw] lg:w-[18vw]'>
               <Image
                 className='rounded-full'
                 src={trackData.items[0].album.images[0].url}
@@ -136,7 +136,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
                 alt={trackData.items[0].album.name + ' cover image'}
               />
             </div>
-            <div className='relative h-40 w-40 -ml-8 lg:h-[14vw] lg:w-[14vw] lg:mt-8'>
+            <div className='relative h-36 w-36 mt-2 -ml-12 sm:h-40 sm:w-40 sm:mt-6 lg:h-[14vw] lg:w-[14vw] lg:mt-8'>
               <Image
                 className='rounded-full'
                 src={trackData.items[2].album.images[0].url}
