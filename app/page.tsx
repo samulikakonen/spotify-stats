@@ -100,25 +100,26 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
           <div className='mx-4 lg:mx-0'>
             <div className='bg-gradient-to-r from-zinc-900 to-transparent flex gap-4 px-4 py-2'>
               <span className='pl-1'>Pos.</span>
-              <span className='pl-12'>Song</span>
+              <span className='pl-14 ml-1'>Song</span>
             </div>
             <div className='h-px bg-gradient-to-l from-transparent to-gray-500' />
             {trackData.items.map((track: any, index: number) => (
               <>
                 <div key={track.id} className='flex items-center gap-6 py-2 pl-4'>
-                  <span className='text-[#00B8A9] font-bold w-6 text-center shrink-0'>{index + 1}</span>
-                  <span className='shrink-0'>
-                    <Image
-                      src={track.album.images[2].url}
-                      width={25}
-                      height={25}
-                      alt={track.album.name + ' cover image'}
-                    />
-                  </span>
-                  <span className='break-all'>{track.name}</span>
-                  <span className='-mb-[2px] text-sm text-zinc-300'>
-                    {track.artists.map((artist: any) => artist.name).join(', ')}
-                  </span>
+                  <div className='text-[#00B8A9] font-bold w-6 text-center shrink-0'>{index + 1}</div>
+                  <Image
+                    src={track.album.images[2].url}
+                    width={35}
+                    height={35}
+                    className='shrink-0'
+                    alt={track.album.name + ' cover image'}
+                  />
+                  <div className='flex flex-col'>
+                    <span>{track.name}</span>
+                    <span className='-mb-[2px] text-sm text-zinc-300'>
+                      {track.artists.map((artist: any) => artist.name).join(', ')}
+                    </span>
+                  </div>
                 </div>
                 <div className='h-px bg-gradient-to-l from-transparent to-gray-500' />
               </>
