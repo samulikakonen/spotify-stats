@@ -73,7 +73,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
         </div>
       </header>
       <main className='pt-4 lg:mx-[8vw] 2xl:mx-[14vw]'>
-        <h2 className='text-2xl mb-8 text-center lg:text-left'>You top songs</h2>
+        <h2 className='text-2xl mb-8 text-center lg:text-left'>Your top songs</h2>
         <div className='flex justify-center gap-2 mb-8 lg:items-start lg:justify-start'>
           <a
             href='/'
