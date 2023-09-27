@@ -54,10 +54,12 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
 
   return (
     <>
-      <header className='my-4 border-b border-neutral-400 px-4 lg:mx-[8vw] lg:border-none lg:mt-8 lg:px-0 2xl:mx-[14vw]'>
+      <header className='py-4 border-b border-neutral-400 px-4 lg:bg-zinc-300/5 lg:px-[8vw] lg:border-none lg:py-8 2xl:px-[14vw]'>
         <div className='flex justify-between mb-8'>
-          <h1 className='text-4xl'>Audiolytix</h1>
-          <a href='/api/auth/signout'>Sign out</a>
+          <h1 className={`text-4xl font-raleway font-extrabold`}>Audiolytix</h1>
+          <a href='/api/auth/signout' className='font-bold'>
+            Sign out
+          </a>
         </div>
         <div className='flex flex-col gap-8 items-center lg:flex-row'>
           {user.images.length > 0 && (
@@ -69,27 +71,27 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
               alt='Profile picture'
             />
           )}
-          <h1 className='text-3xl pb-8 lg:pb-0'>{user.display_name}</h1>
+          <h1 className='text-2xl pb-4 lg:pb-0 font-raleway font-bold'>{user.display_name}</h1>
         </div>
       </header>
-      <main className='pt-4 pb-8 lg:mx-[8vw] 2xl:mx-[14vw]'>
-        <h2 className='text-2xl mb-8 text-center lg:text-left'>Your top songs</h2>
+      <main className='pt-8 pb-8 lg:mx-[8vw] 2xl:mx-[14vw]'>
+        <h2 className='text-2xl mb-8 text-center lg:text-left font-raleway'>Your top songs</h2>
         <div className='flex justify-center gap-2 mb-8 lg:items-start lg:justify-start'>
           <a
             href='/'
-            className={`px-4 py-1 rounded-full text-white ${activeTimeRange === 'short_term' ? 'bg-cyan-500' : ''}`}
+            className={`px-4 py-1 rounded-full text-white ${activeTimeRange === 'short_term' ? 'bg-[#00B8A9]' : ''}`}
           >
             Last month
           </a>
           <a
             href='/?time_range=medium_term'
-            className={`px-4 py-1 rounded-full text-white ${activeTimeRange === 'medium_term' ? 'bg-cyan-500' : ''}`}
+            className={`px-4 py-1 rounded-full text-white ${activeTimeRange === 'medium_term' ? 'bg-[#00B8A9]' : ''}`}
           >
             Last 6 months
           </a>
           <a
             href='/?time_range=long_term'
-            className={`px-4 py-1 rounded-full text-white ${activeTimeRange === 'long_term' ? 'bg-cyan-500' : ''}`}
+            className={`px-4 py-1 rounded-full text-white ${activeTimeRange === 'long_term' ? 'bg-[#00B8A9]' : ''}`}
           >
             All time
           </a>
@@ -104,7 +106,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
             {trackData.items.map((track: any, index: number) => (
               <>
                 <div key={track.id} className='flex gap-4 items-center py-2 pl-6'>
-                  <span>{index + 1}</span>
+                  <span className='text-[#00B8A9] font-bold'>{index + 1}</span>
                   <span className='flex items-center gap-4 pl-4'>
                     <Image
                       src={track.album.images[2].url}
@@ -122,7 +124,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
           <div className='flex justify-center mb-8 lg:mt-32 lg:-ml-10'>
             <div className='relative h-36 w-36 mt-2 -mr-12 sm:h-40 sm:w-40 sm:mt-6 lg:h-[14vw] lg:w-[14vw] lg:mt-8'>
               <Image
-                className='rounded-full'
+                className='rounded-lg'
                 src={trackData.items[1].album.images[0].url}
                 fill
                 alt={trackData.items[1].album.name + ' cover image'}
@@ -130,7 +132,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
             </div>
             <div className='relative h-40 w-40 z-10 sm:h-48 sm:w-48 lg:h-[18vw] lg:w-[18vw]'>
               <Image
-                className='rounded-full'
+                className='rounded-lg'
                 src={trackData.items[0].album.images[0].url}
                 fill
                 alt={trackData.items[0].album.name + ' cover image'}
@@ -138,7 +140,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
             </div>
             <div className='relative h-36 w-36 mt-2 -ml-12 sm:h-40 sm:w-40 sm:mt-6 lg:h-[14vw] lg:w-[14vw] lg:mt-8'>
               <Image
-                className='rounded-full'
+                className='rounded-lg'
                 src={trackData.items[2].album.images[0].url}
                 fill
                 alt={trackData.items[2].album.name + ' cover image'}
@@ -147,6 +149,7 @@ export default async function Home({ searchParams }: { searchParams: { time_rang
           </div>
         </div>
       </main>
+      <footer className='lg:h-64 lg:bg-zinc-300/5' />
     </>
   );
 }
